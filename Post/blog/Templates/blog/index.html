@@ -1,0 +1,21 @@
+	
+<!doctype html>
+<html>
+	<body>
+      		<h1>Divine Spark Blog</h1>
+      		<br /> <br />
+     		 <h2>Latest posts</h2>
+     		 <hr/>
+     		 {% for post in  posts %}
+    			<a href="{% url 'detail' post.id %}">  <h3>{{ post.title }}</h3></a>
+                 
+                <p>Written by {{post.author.name}} on {{ post.date }}</p>
+   			   
+    			  <p>{{ post.summary }}</p>
+     		 {% endfor %}
+    
+  		&copy; My Blog,  {% now "Y" %}
+	</body>
+</html>
+
+
