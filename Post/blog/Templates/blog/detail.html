@@ -10,7 +10,56 @@
       <br />
 <br />
       <br/>
-      <p>{{ blog.body }}</p>
+      <p>{{ post.body }}</p>
+
+
+
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+<hr/>
+
+      <h2>Leave a comment</h2>
+
+      <form  method="post" >
+        {% csrf_token %}
+
+        {{ comment_form.as_p }}
+
+        {% if request.user.is_authenticated %}
+           <input type="submit" value="Submit"/>
+        {% else %}
+           <input type="submit" value="Submit" disabled>
+        {% endif %}
+      </form>
+
+
+        <!-- comments -->
+        <h2>{{ comments.count }} comments</h2>
+
+        {% for comment in comments %}
+        
+          <p>
+
+            {{ comment.content }} <br/>
+            <p>by {{ comment.user.username }}  </p> 
+            <p>on {{ comment.timestamp }} </p>
+            
+          </p>
+        <br/>
+        </div>
+        {% endfor %}
+
+
       
   </body>
 </html>

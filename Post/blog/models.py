@@ -26,13 +26,13 @@ class Post(models.Model):
         db_table = "post"
 
 
-class Comments(models.Model):
+class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     content =  models.TextField(max_length=160)
     timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return '{}-{}'.format(self.post.title, str(self.user.username)) 
+        return '{}-{}'.format(self.post.title, self.timestamp, str(self.user.username)) 
     class meta:
         db_table = "comment"
